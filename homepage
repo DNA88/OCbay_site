@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>OC BAY - HOME</title>
 
+<html>
+
+<head>
+<title>Background Video Test</title>
+<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
+
+<video autoplay  poster="ocean.jpg" id="bgvid" loop>
+   <source src="ocean.webm" type="video/webm">
+   <source src="ocean.mp4" type="video/mp4">
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('video');
+	</script>
+	<![endif]-->
+
+</video>
+
+
+
+<div id="polina">
+   <h1>United Storm Water, Inc.</h1>
+   <p><a href="http://unitedstormwater.com/index.html">Visit our Website</a></p>
+   <button>Pause</button>
+</div>
+
+<script>
+   var vid = document.getElementById("bgvid");
+   var pauseButton = document.querySelector("#polina button");
+
+   function vidFade() {
+     vid.classList.add("stopfade");
+   }
+
+   vid.addEventListener('ended', function()
+   {
+   // only functional if "loop" is removed 
+   vid.pause();
+   // to capture IE10
+   vidFade();
+   }); 
+
+
+   pauseButton.addEventListener("click", function() {
+     vid.classList.toggle("stopfade");
+     if (vid.paused) {
+       vid.play();
+       pauseButton.innerHTML = "Pause";
+     } else {
+       vid.pause();
+       pauseButton.innerHTML = "Paused";
+     }
+   })
+</script>
+
+
+<!------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------>
+<!-- Thanks to "http://demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video" -->
+<!------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------>
+
 
 </body>
 </html>
